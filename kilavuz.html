@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arçelik KYS · Kullanım Kılavuzu</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B2D6E;
+    --navy-light: #1a3d82;
+    --orange: #E0511C;
+    --orange-light: #f06030;
+    --bg: #F4F6FB;
+    --white: #fff;
+    --border: #E2E8F2;
+    --text: #1E2D4E;
+    --gray: #64748B;
+    --gray-light: #94A3B8;
+    --green: #16A34A;
+    --shadow: 0 2px 12px rgba(11,45,110,.08);
+    --shadow-lg: 0 8px 32px rgba(11,45,110,.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,.25);
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .header-logo {
+    width: 36px; height: 36px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-logo svg { width: 20px; height: 20px; }
+  .header-text h1 { font-size: 17px; font-weight: 800; color: #fff; line-height: 1.2; }
+  .header-text p { font-size: 11px; color: rgba(255,255,255,.55); font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+
+  /* PROGRESS NAV */
+  .toc-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .toc-bar::-webkit-scrollbar { display: none; }
+  .toc-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .toc-item {
+    padding: 12px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+    white-space: nowrap;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .toc-item:hover { color: var(--navy); border-color: var(--navy); }
+  .toc-item .toc-num {
+    width: 18px; height: 18px;
+    background: var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--gray);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: 16px;
+    padding: 40px 36px;
+    color: #fff;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,.04);
+    border-radius: 50%;
+  }
+  .hero h2 { font-size: 26px; font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
+  .hero p { font-size: 15px; color: rgba(255,255,255,.7); max-width: 480px; line-height: 1.6; }
+  .hero-badges { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .badge {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,.9);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+
+  /* SECTION */
+  .section {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+  .icon-navy { background: #EEF2FF; }
+  .icon-orange { background: #FFF0EB; }
+  .icon-green { background: #F0FDF4; }
+  .icon-purple { background: #FAF5FF; }
+  .icon-blue { background: #EFF6FF; }
+  .section-title h3 { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .section-title p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .step-content p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+  /* CARDS GRID */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .card-icon { font-size: 22px; margin-bottom: 8px; }
+  .card h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .card p { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+  /* TIP BOX */
+  .tip {
+    background: #FFF7ED;
+    border: 1px solid #FED7AA;
+    border-left: 4px solid var(--orange);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #92400E;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* INFO BOX */
+  .info-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #1E40AF;
+    margin-top: 20px;
+  }
+  .info-box strong { display: block; margin-bottom: 4px; font-weight: 700; }
+
+  /* FILTER VISUAL */
+  .filter-visual {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .filter-item {
+    margin-bottom: 14px;
+  }
+  .filter-item:last-child { margin-bottom: 0; }
+  .filter-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,255,255,.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .filter-options { display: flex; flex-direction: column; gap: 4px; }
+  .filter-radio {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    color: rgba(255,255,255,.7);
+    padding: 5px 8px;
+    border-radius: 6px;
+  }
+  .filter-radio.active {
+    background: rgba(224,81,28,.3);
+    color: #fff;
+  }
+  .radio-dot {
+    width: 12px; height: 12px;
+    border: 2px solid rgba(255,255,255,.4);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .radio-dot.filled {
+    background: var(--orange);
+    border-color: var(--orange);
+  }
+  .filter-check {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    color: rgba(255,255,255,.7);
+    padding: 4px 8px;
+    border-radius: 5px;
+  }
+  .filter-check.checked {
+    background: rgba(224,81,28,.2);
+    color: #fff;
+  }
+  .check-box {
+    width: 12px; height: 12px;
+    border: 2px solid rgba(255,255,255,.4);
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .check-box.checked-box { background: var(--orange); border-color: var(--orange); }
+
+  /* GRADE BADGES */
+  .grades { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+  .grade {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900;
+    flex-shrink: 0;
+  }
+  .grade-a { background: #C8E6C9; color: #1B5E20; }
+  .grade-b { background: #DCEDC8; color: #2E7D32; }
+  .grade-c { background: #FFE0B2; color: #E65100; }
+  .grade-d { background: #FFCDD2; color: #C62828; }
+  .grade-e { background: #E1BEE7; color: #4A148C; }
+  .grade-desc { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  /* MAIL STEPS */
+  .mail-flow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .mail-step {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mail-step .ms-num {
+    width: 20px; height: 20px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .mail-arrow { color: var(--gray-light); font-size: 16px; }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .data-table th {
+    background: var(--bg);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border-bottom: 2px solid var(--border);
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .data-table td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: var(--gray-light);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  footer strong { color: var(--gray); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .header-inner { padding: 14px 16px; }
+    main { padding: 20px 16px 60px; }
+    .hero { padding: 28px 20px; }
+    .hero h2 { font-size: 21px; }
+    .section { padding: 22px 18px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .mail-flow { flex-direction: column; align-items: flex-start; }
+    .mail-arrow { transform: rotate(90deg); }
+  }
+  @media (max-width: 400px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Arçelik KYS</h1>
+      <p>Karne Yönetim Sistemi · Kullanım Kılavuzu</p>
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a class="toc-item" href="#giris"><span class="toc-num">1</span>Giriş</a>
+    <a class="toc-item" href="#filtreler"><span class="toc-num">2</span>Filtreler</a>
+    <a class="toc-item" href="#genel-bakis"><span class="toc-num">3</span>Genel Bakış</a>
+    <a class="toc-item" href="#bolge-ozeti"><span class="toc-num">4</span>Bölge Özeti</a>
+    <a class="toc-item" href="#mail-merkezi"><span class="toc-num">5</span>Mail Merkezi</a>
+    <a class="toc-item" href="#yonetici-ozeti"><span class="toc-num">6</span>Yönetici Özeti</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>Karne Yönetim Sistemi<br>Nasıl Kullanılır?</h2>
+    <p>9 bölge, 3 dönem — tüm Türkiye yetkili servis verilerini tek ekranda görüntüleyin, filtreleyin ve paylaşın.</p>
+    <div class="hero-badges">
+      <div class="badge"><div class="badge-dot"></div>9 Bölge</div>
+      <div class="badge"><div class="badge-dot"></div>487 Servis</div>
+      <div class="badge"><div class="badge-dot"></div>3 Dönem</div>
+      <div class="badge"><div class="badge-dot"></div>PC & Mobil</div>
+    </div>
+  </div>
+
+  <!-- 1. GİRİŞ -->
+  <section class="section" id="giris">
+    <div class="section-header">
+      <div class="section-icon icon-navy">🔐</div>
+      <div class="section-title">
+        <h3>1 · Sisteme Giriş</h3>
+        <p>Uygulamaya nasıl erişilir ve oturum açılır.</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Uygulamayı Açın</h4>
+          <p>Tarayıcınızda adres çubuğuna aşağıdaki adresi girin veya kayıtlı bağlantıya tıklayın:<br>
+          <code style="background:#F1F5F9;padding:3px 8px;border-radius:4px;font-size:12px;color:var(--navy);font-weight:700">sba190586.github.io/servis-karne/</code></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Şifrenizi Girin</h4>
+          <p>Şifre alanına kurumsal şifrenizi yazın ve <strong>Giriş Yap</strong> butonuna basın veya klavyede <kbd style="background:#F1F5F9;border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:12px">Enter</kbd> tuşuna basın.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Uygulama Açılır</h4>
+          <p>Giriş başarılıysa ana ekrana yönlendirilirsiniz. Varsayılan görünüm <strong>İstanbul Anadolu BY · Mart 2026 · Genel Bakış</strong> olarak açılır.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <div><strong>Telefona Kısayol Ekleyin:</strong> Chrome'da sağ üst menüden <em>"Ana Ekrana Ekle"</em> seçeneğiyle uygulamayı telefon ana ekranınıza uygulama gibi ekleyebilirsiniz. Sonraki girişlerde tek dokunuşla açılır.</div>
+    </div>
+  </section>
+
+  <!-- 2. FİLTRELER -->
+  <section class="section" id="filtreler">
+    <div class="section-header">
+      <div class="section-icon icon-orange">🎛️</div>
+      <div class="section-title">
+        <h3>2 · Filtreler</h3>
+        <p>Sol kenar çubuğundaki üç filtre tüm görünümleri aynı anda günceller.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+      <div>
+        <div class="filter-visual">
+          <div class="filter-item">
+            <div class="filter-label">Aktif Dönem</div>
+            <div class="filter-options">
+              <div class="filter-radio"><div class="radio-dot"></div>Ocak 2026</div>
+              <div class="filter-radio"><div class="radio-dot"></div>Şubat 2026</div>
+              <div class="filter-radio active"><div class="radio-dot filled"></div>Mart 2026</div>
+            </div>
+          </div>
+          <div class="filter-item">
+            <div class="filter-label">Bölge Yöneticiliği</div>
+            <div class="filter-options">
+              <div class="filter-radio"><div class="radio-dot"></div>İST.AVRUPA BY</div>
+              <div class="filter-radio active"><div class="radio-dot filled"></div>İST.ANADOLU BY</div>
+              <div class="filter-radio"><div class="radio-dot"></div>BURSA BY</div>
+              <div class="filter-radio"><div class="radio-dot"></div>İZMİR BY</div>
+            </div>
+          </div>
+          <div class="filter-item">
+            <div class="filter-label">Servis Yönetmeni</div>
+            <div class="filter-options">
+              <div class="filter-check"><div class="check-box"></div>Tüm Yöneticiler</div>
+              <div class="filter-check checked"><div class="check-box checked-box"></div>BERKCAN TÜTER</div>
+              <div class="filter-check checked"><div class="check-box checked-box"></div>TANSEL BAYDAR</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:8px">Sol kenar çubuk görünümü</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card" style="background:#fff">
+          <div class="card-icon">📅</div>
+          <h4>Dönem Seçici</h4>
+          <p>Ocak / Şubat / Mart 2026 arasında geçiş yapar. Tüm karşılaştırmalar seçili döneme göre güncellenir.</p>
+        </div>
+        <div class="card" style="background:#fff">
+          <div class="card-icon">🗺️</div>
+          <h4>Bölge Filtresi</h4>
+          <p>Tek seçim yapılır. Seçilen bölgenin 42–66 servisi görüntülenir. Servis Yönetmeni listesi otomatik güncellenir.</p>
+        </div>
+        <div class="card" style="background:#fff">
+          <div class="card-icon">👤</div>
+          <h4>Servis Yönetmeni</h4>
+          <p>Çoklu seçim yapılabilir. Birden fazla yönetmeni seçince tüm servisleri birlikte listelenir. <strong style="color:var(--orange)">✕ Sıfırla</strong> ile temizlenir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. GENEL BAKIŞ -->
+  <section class="section" id="genel-bakis">
+    <div class="section-header">
+      <div class="section-icon icon-blue">📊</div>
+      <div class="section-title">
+        <h3>3 · Genel Bakış</h3>
+        <p>Seçili bölgenin performans özetini ve sıralamayı gösterir.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔢</div>
+        <h4>Toplam Servis</h4>
+        <p>Bölgedeki yetkili servis sayısı. Yönetmen filtresi aktifse filtrelenmiş sayı görünür.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <h4>Bölge Ortalaması</h4>
+        <p>Seçili bölgedeki tüm servislerin 100 üzerinden ortalama karne puanı.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🥇</div>
+        <h4>A Notu Alan</h4>
+        <p>Bölgede A notu almayı başaran servis sayısı ve yüzdesi.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <h4>Bölge Birincisi</h4>
+        <p>En yüksek puanlı servis ve Türkiye genelindeki sırası.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px">
+      <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px">Harf Notu Dağılımı</p>
+      <div class="grades">
+        <div><div class="grade grade-a">A</div><div class="grade-desc">74.71+</div></div>
+        <div><div class="grade grade-b">B</div><div class="grade-desc">64.53+</div></div>
+        <div><div class="grade grade-c">C</div><div class="grade-desc">45.17+</div></div>
+        <div><div class="grade grade-d">D</div><div class="grade-desc">35.52+</div></div>
+        <div><div class="grade grade-e">E</div><div class="grade-desc">0+</div></div>
+      </div>
+      <p style="font-size:12px;color:var(--gray);margin-top:8px">Puan aralıkları Türkiye geneli 487 servis üzerinden hesaplanır.</p>
+    </div>
+
+    <div style="margin-top:24px">
+      <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px">Bölge Liderleri / Servis Listesi</p>
+      <p style="font-size:13px;color:var(--gray)">Bölge genel bakışında en başarılı <strong>ilk 10 servis</strong> gösterilir. Bir veya birden fazla Servis Yönetmeni seçildiğinde, o yönetmene ait <strong>tüm servisler</strong> sıralı olarak görüntülenir — tablo başlığı buna göre güncellenir.</p>
+    </div>
+
+    <div style="margin-top:24px">
+      <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px">Kriter Ortalamaları</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Kriter</th><th>Açıklama</th><th>Maks</th><th>Hedef</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>HSP-5</td><td>Hasarlı Değişim Maliyeti / HVMAM</td><td>10</td><td>Az olması başarı</td></tr>
+          <tr><td>HSP-8</td><td>Ek Garanti + TV Sigorta Ciro / HVMAM</td><td>20</td><td>Yüksek olması başarı</td></tr>
+          <tr><td>HSP-9</td><td>Tamamlayıcı Ürün Ciro / HVMAM</td><td>20</td><td>Yüksek olması başarı</td></tr>
+          <tr><td>MMP-1</td><td>Müşteri Memnuniyeti (NPS)</td><td>10</td><td>Yüksek olması başarı</td></tr>
+          <tr><td>MMP-4</td><td>Şikayet Konu Çağrı x İletişim Katsayısı</td><td>30</td><td>Az olması başarı</td></tr>
+          <tr><td>MMP-6</td><td>Randevu Performansı</td><td>10</td><td>Yüksek olması başarı</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4. BÖLGE ÖZETİ -->
+  <section class="section" id="bolge-ozeti">
+    <div class="section-header">
+      <div class="section-icon icon-purple">🗺️</div>
+      <div class="section-title">
+        <h3>4 · Bölge Özeti</h3>
+        <p>Bölge performansını tek bir paylaşılabilir kartla sunar.</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Sol menüden "Bölge Özeti"ne tıklayın</h4>
+          <p>Seçili bölgenin tüm yönetmenlerini, servis sayılarını ve dönem karşılaştırmasını gösteren özet bir kart açılır.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>"Yazdır / Dışa Aktar" butonuna tıklayın</h4>
+          <p>Bölge performans kartı ve kriter tablosu yeni bir pencerede açılır. Tarayıcının yazdır işleviyle PDF olarak kaydedebilirsiniz.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">📋</span>
+      <div>Bölge Özeti sayfası, bölge değiştirdiğinizde veya yönetmen filtresi uyguladığınızda otomatik olarak güncellenir.</div>
+    </div>
+  </section>
+
+  <!-- 5. KARNE KARTLARI -->
+  
+
+  <!-- 6. MAİL MERKEZİ -->
+  <section class="section" id="mail-merkezi">
+    <div class="section-header">
+      <div class="section-icon icon-green">✉️</div>
+      <div class="section-title">
+        <h3>5 · Mail Merkezi</h3>
+        <p>Servislere karne bildirim maili göndermek için adım adım rehber.</p>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--gray);margin-bottom:20px">Mail Merkezi tablosunda seçili bölgedeki tüm servisler listelenir. Her servis için ayrı, kişiselleştirilmiş bir mail taslağı hazırlanabilir.</p>
+    <div class="info-box" style="margin-top:0;margin-bottom:20px">
+      <strong>⇅ Kolon Sıralaması</strong>
+      Tüm tablolarda sütun başlığına tıklayarak artan/azalan sıralama yapabilirsiniz. Varsayılan sıralama (bölge sırası) ilk yüklemede aktiftir.
+    </div>
+
+    <div class="mail-flow">
+      <div class="mail-step"><div class="ms-num">1</div>Tablodan servis seç</div>
+      <div class="mail-arrow">→</div>
+      <div class="mail-step"><div class="ms-num">2</div>PDF kartı kaydet</div>
+      <div class="mail-arrow">→</div>
+      <div class="mail-step"><div class="ms-num">3</div>Outlook açılır</div>
+      <div class="mail-arrow">→</div>
+      <div class="mail-step"><div class="ms-num">4</div>PDF eki ekle</div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Tablodan "Gönder" butonuna tıklayın</h4>
+          <p>İlgili servisin satırındaki turuncu <strong>Gönder</strong> butonuna tıklayın. 2 adımlı wizard açılır.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Adım 1 — PDF Karne Kartını Kaydedin</h4>
+          <p>Wizard penceresinde karne kartı önizlemesi görünür. <strong>PDF İndir</strong> butonuna tıklayarak dosyayı bilgisayarınıza kaydedin.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Adım 2 — Outlook'ta Mail Oluşturun</h4>
+          <p><strong>Outlook'u Aç</strong> butonuna tıklayın. Alıcılar, CC listesi ve mail gövdesi (karne özeti dahil) otomatik doldurulmuş Outlook açılır. Kalan tek işlem: PDF eki ekleyip göndermek.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Gönderim Durumu Güncellenir</h4>
+          <p>Mail gönderildikten sonra servisin <strong>Gönderildi</strong> olarak işaretlemek için tablodaki durum butonunu kullanabilirsiniz. Bu durum sayfa yenilenirse sıfırlanır.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-icon">📬</span>
+      <div>Mail gövdesi otomatik olarak ilgili bölge yöneticisinin imzasıyla oluşturulur — sadece PDF ekini eklemeniz yeterlidir.</div>
+    </div>
+  </section>
+
+  <!-- 7. YÖNETİCİ ÖZETİ -->
+  <section class="section" id="yonetici-ozeti">
+    <div class="section-header">
+      <div class="section-icon icon-navy">👥</div>
+      <div class="section-title">
+        <h3>6 · Yönetici Özeti</h3>
+        <p>Servis yönetmenlerinin karşılaştırmalı performans tablosu.</p>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--gray);margin-bottom:20px">Yönetici Özeti, seçili bölgedeki her servis yönetmeninin sorumluluğundaki servislerin ortalama performansını karşılaştırmalı gösterir.</p>
+    <div class="cards" style="margin-bottom:16px">
+      <div class="card">
+        <div class="card-icon">📥</div>
+        <h4>Excel İndir</h4>
+        <p>Tüm Servisler tablosunu Excel dosyası olarak dışa aktarın. Bölge ve dönem bilgisi dosya adına eklenir.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⇅</div>
+        <h4>Kolon Sıralama</h4>
+        <p>Herhangi bir sütun başlığına tıklayarak tabloyu o kritere göre artan/azalan sıralayın.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h4>Ortalama Puan</h4>
+        <p>Her yönetmenin sorumlu olduğu servislerin dönem ortalaması.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏅</div>
+        <h4>A Notu Oranı</h4>
+        <p>Yönetmenin servislerinden A notu alanların yüzdesi.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h4>Kriter Detayı</h4>
+        <p>6 kriterin her biri için yönetmen bazlı ortalama puanlar.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h4>Dönem Karşılaştırması</h4>
+        <p>Önceki döneme göre artış / düşüş göstergesi.</p>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:20px">
+      <strong>⚡ Otomatik Güncelleme</strong>
+      Bölge veya servis yönetmeni filtresi değiştirildiğinde Yönetici Özeti sayfası açıksa otomatik olarak yenilenir. Sayfaya ilk geçişte de güncel veri yüklenir.
+    </div>
+  </section>
+
+  <!-- ÖZET TABLOSU -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-icon icon-blue">🗒️</div>
+      <div class="section-title">
+        <h3>Hızlı Başvuru</h3>
+        <p>Tüm sayfalar ve temel işlevler tek tabloda.</p>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Sayfa</th><th>Ne Gösterir?</th><th>Temel İşlev</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Genel Bakış</td>
+          <td>Bölge özeti, not dağılımı, liderler, kriter ortalamaları</td>
+          <td>Bölgenin anlık durumunu görme</td>
+        </tr>
+        <tr>
+          <td>Bölge Özeti</td>
+          <td>Yönetmen bazlı bölge kartı ve kriter tablosu</td>
+          <td>PDF / baskı olarak paylaşma</td>
+        </tr>
+        <tr>
+          <td>Mail Merkezi</td>
+          <td>Tüm servislerin iletişim listesi</td>
+          <td>Karne bildirim maili gönderme</td>
+        </tr>
+        <tr>
+          <td>Yönetici Özeti</td>
+          <td>Servis yönetmenleri karşılaştırması</td>
+          <td>Yönetmen performansını analiz etme</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Arçelik Satış Sonrası Hizmetler</strong> · Karne Yönetim Sistemi v66 · 2026<br>
+  Sorunlarınız için servis yöneticinizle iletişime geçin.
+</footer>
+
+</body>
+</html>
